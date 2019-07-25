@@ -12,8 +12,7 @@ def resize_array(array):
 	new_capacity = array.capacity * 2
 	new_elements = [None] * new_capacity
 	array.capacity = new_capacity
-for x in array:
-	new_elements = [n for n in array]
+	new_ele = [n for n in array.elements] + new_elements
 	# Your code here
 
 
