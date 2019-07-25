@@ -10,7 +10,10 @@ class array:
 # Double the size of the given array
 def resize_array(array):
 	new_capacity = array.capacity * 2
-
+	new_elements = [None] * new_capacity
+	array.capacity = new_capacity
+for x in array:
+	new_elements = [n for n in array]
 	# Your code here
 
 
