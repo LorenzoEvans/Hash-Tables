@@ -11,8 +11,12 @@ class array:
 def resize_array(array):
 	new_capacity = array.capacity * 2
 	new_elements = [None] * new_capacity
+	# new_ele = [n for n in array.elements] + new_elements
+	# array.elements = new_ele
+	for i in range(array.capacity):
+		new_elements[i] = array.elements[i]
+	array.elements = new_elements
 	array.capacity = new_capacity
-	new_ele = [n for n in array.elements] + new_elements
 	# Your code here
 
 
@@ -30,11 +34,16 @@ def array_read(array, index):
 
 # Insert an element in a given array at a given index
 def array_insert(array, index, value):
+	if array.capacity <= index:
+		resize_array(array)
+
+
 	# Throw an error if array is out of the current count
 
 	# Resize the array if the number of elements is over capacity
 
 	# Move the elements to create a space at 'index'
+	for i in range(array.capacity):
 	# Think about where to start!
 
 	# Add the new element to the array and update the count
