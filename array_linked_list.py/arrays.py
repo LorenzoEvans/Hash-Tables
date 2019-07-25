@@ -8,20 +8,26 @@ class array:
 		self.elements = [None] * capacity
 
 # Double the size of the given array
-def resize_array():
+def resize_array(array):
+	new_capacity = array.capacity * 2
+
 	# Your code here
-	pass
 
 
 # Return an element of a given array at a given index
 def array_read(array, index):
 	# Throw an error if array is out of the current count
 	# Your code here
-	pass
-
+	if not array.elements[index]:
+		print("Index out of range.")
+	if index >= array.capacity:
+		print("Error! index " + str(index) + " out of range")
+		return None
+	else:
+		return array.elements[index]
 
 # Insert an element in a given array at a given index
-def array_insert():
+def array_insert(array, index, value):
 	# Throw an error if array is out of the current count
 
 	# Resize the array if the number of elements is over capacity
