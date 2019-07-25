@@ -5,6 +5,7 @@ class array:
 	def __init__(self, capacity):
 		# Your code here
 		self.capacity = capacity
+		self.count = 0
 		self.elements = [None] * capacity
 
 # Double the size of the given array
@@ -26,7 +27,7 @@ def array_read(array, index):
 	# Your code here
 	if not array.elements[index]:
 		print("Index out of range.")
-	if index >= array.capacity:
+	if index >= array.count:
 		print("Error! index " + str(index) + " out of range")
 		return None
 	else:
@@ -34,7 +35,9 @@ def array_read(array, index):
 
 # Insert an element in a given array at a given index
 def array_insert(array, index, value):
-	if array.capacity <= index:
+
+
+	if array.capacity <= array.count:
 		resize_array(array)
 
 
@@ -43,16 +46,17 @@ def array_insert(array, index, value):
 	# Resize the array if the number of elements is over capacity
 
 	# Move the elements to create a space at 'index'
-	for i in range(array.capacity):
+	for i in range(array.count, index, -1):
+		array.elements[i] = array.elements[i - 1]
 	# Think about where to start!
 
 	# Add the new element to the array and update the count
-	pass
-
+	array.elements[index] = value
+	array.count += 1
 
 # Add an element to the end of the given array
-def array_append():
-
+def array_append(array, value):
+	array_insert(array, value, array.count)
 	# Hint, this can be done with one line of code
 	# (Without using a built in function)
 
@@ -62,11 +66,19 @@ def array_append():
 
 # Remove the first occurence of the given element from the array
 # Throw an error if the value is not found
-def array_remove():
+def array_remove(array, element):
 	# Your code here
-	pass
-
-
+	removed = False
+	for i in range(array.count):
+		if removed:
+			array.elements[i-1] = array.elements[i]
+		elif array.elements[i] == element:
+			removed = True
+	if removed:
+		array.count =- 1
+		array.elements[array.count] = None
+	else:
+		print("Error, element " + str(element) + " not found!")
 # Remove the element in a given position and return it
 # Then shift every element after that occurrance to fill the gap
 def array_pop():
