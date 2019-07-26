@@ -82,14 +82,23 @@ Fill this in.
 Should return None if the key is not found.
 '''
 def hash_table_retrieve(hash_table, key):
-    pass
+    index = hash(key, hash_table.capacity)
+    for i in hash_table.elements:
+        if i is None:
+            continue
+        elif i is not None:
+            print('non-null i key: ',i.key)
+            print('non-null i val: ',i.value)
+
 
 
 def Testing():
     ht = BasicHashTable(16)
     # print('hash is: ',hash("Grace Hopper", ht.capacity))
-    hash_table_insert(ht, "2384729842", "Dapper Dan")
-    hash_table_insert(ht, "2384729842", "Virgil Abloh")
+    hash_table_insert(ht, "1384729842", "Dapper Dan")
+    # hash_table_insert(ht, "238472982342", "Virgil Abloh")
+    # hash_table_insert(ht, "33432982342", "Ibn Jasper")
+    # hash_table_insert(ht, "438472982342", "Rob Roy")
     element_list = []
     for x in ht.elements:
         if x is None:
@@ -97,7 +106,8 @@ def Testing():
         elif x is not None:
             element_list.append(x.value)
     print('ele_list: ',element_list)
-    hash_table_remove(ht, "2384729842")
+    # hash_table_remove(ht, "2384729842")
+    # hash_table_retrieve(ht, "2384729842")
     #
     # if hash_table_retrieve(ht, "line") is None:
     #     print("...gone tomorrow (success!)")
