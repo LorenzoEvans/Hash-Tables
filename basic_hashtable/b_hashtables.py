@@ -40,10 +40,11 @@ def hash(string, max):
     # '''
 def hash_table_insert(hash_table, key, value):
     index = hash(key, hash_table.capacity)
+    pair = Pair(key, value)
     if hash_table.elements[index] is not None:
         print(f"You are overwriting element '{hash_table.elements[index]}' at index '{index}' with value '{value}'")
     print('hash_table.elements[index] was: ', hash_table.elements[index])
-    hash_table.elements[index] = value
+    hash_table.elements[index] = pair
     print('index is: ',index)
     print('value is: ',value)
     print('hash_table.elements[index] is now: ', hash_table.elements[index])
@@ -54,7 +55,15 @@ def hash_table_insert(hash_table, key, value):
 # If you try to remove a value that isn't there, print a warning.
 # '''
 def hash_table_remove(hash_table, key):
-    pass
+    index = hash(key, hash_table.capacity)
+    pair = Pair(key, value)
+    if hash_table.elements[index] is not None:
+        print(f"You are overwriting element '{hash_table.elements[index]}' at index '{index}' with value '{value}'")
+    print('hash_table.elements[index] was: ', hash_table.elements[index])
+    hash_table.elements[index] = pair
+    print('index is: ', index)
+    print('value is: ', value)
+    print('hash_table.elements[index] is now: ', hash_table.elements[index])
 
 
 # '''
