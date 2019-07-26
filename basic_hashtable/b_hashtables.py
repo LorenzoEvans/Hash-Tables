@@ -42,29 +42,29 @@ def hash_table_insert(hash_table, key, value):
     index = hash(key, hash_table.capacity)
     pair = Pair(key, value)
     if hash_table.elements[index] is not None:
-        print(f"You are overwriting element '{hash_table.elements[index]}' at index '{index}' with value '{value}'")
+        print(f"You are overwriting element '{str(hash_table.elements[index].value)}' at index '{index}' with value '{value}'")
     print('hash_table.elements[index] was: ', hash_table.elements[index])
     hash_table.elements[index] = pair
     print('index is: ',index)
     print('value is: ',value)
-    print('hash_table.elements[index] is now: ', hash_table.elements[index])
+    print('hash_table.elements[index] is now: ', hash_table.elements[index].value)
 
 # '''
 # Fill this in.
 
 # If you try to remove a value that isn't there, print a warning.
 # '''
-def hash_table_remove(hash_table, key):
-    index = hash(key, hash_table.capacity)
-    pair = Pair(key, value)
-    if hash_table.elements[index] is not None:
-        print(f"You are overwriting element '{hash_table.elements[index]}' at index '{index}' with value '{value}'")
-    print('hash_table.elements[index] was: ', hash_table.elements[index])
-    hash_table.elements[index] = pair
-    print('index is: ', index)
-    print('value is: ', value)
-    print('hash_table.elements[index] is now: ', hash_table.elements[index])
-
+# def hash_table_remove(hash_table, key):
+#     index = hash(key, hash_table.capacity)
+#     pair = Pair(key, value)
+#     if hash_table.elements[index] is not None:
+#         print(f"You are overwriting element '{hash_table.elements[index]}' at index '{index}' with value '{value}'")
+#     print('hash_table.elements[index] was: ', hash_table.elements[index])
+#     hash_table.elements[index] = pair
+#     print('index is: ', index)
+#     print('value is: ', value)
+#     print('hash_table.elements[index] is now: ', hash_table.elements[index])
+#
 
 # '''
 # Fill this in.
@@ -78,9 +78,15 @@ def hash_table_retrieve(hash_table, key):
 def Testing():
     ht = BasicHashTable(16)
     print('hash is: ',hash("Grace Hopper", ht.capacity))
-    hash_table_insert(ht, "2384729842", "Grace Hopper")
-    hash_table_insert(ht, "2384729842", "John McCarthy")
-    print('elements are: ',ht.elements)
+    hash_table_insert(ht, "2384729842", "Dapper Dan")
+    hash_table_insert(ht, "2384729842", "Virgil Abloh")
+    element_list = []
+    for x in ht.elements:
+        if x is None:
+            element_list.append(x)
+        elif x is not None:
+            element_list.append(x.value)
+    print('ele_list: ',element_list)
     # hash_table_remove(ht, "line")
     #
     # if hash_table_retrieve(ht, "line") is None:
