@@ -20,57 +20,65 @@ class BasicHashTable:
         self.elements = [None] * capacity
         pass
 
-    def djb2(self, key):
+    def djb2(key):
         hash = 5381
         for x in key:
             hash = ((hash << 5) + hash) + ord(x)
         return hash & 0xFFFFFFFF
-# '''
-# Fill this in.
-# Research and implement the djb2 hash function
-# '''
-def hash(string, max):
-    pass
+    # '''
+    # Fill this in.
+    # Research and implement the djb2 hash function
+    # '''
+    def hash(string, max):
+        hash_val = djb2(string) % max
+        return hash_val
+
+    # '''
+    # Fill this in.
+
+    # If you are overwriting a value with a different key, print a warning.
+    # '''
+    def hash_table_insert(hash_table, key, value):
+        index = hash_table.capacity
+        pass
 
 
-# '''
-# Fill this in.
+    # '''
+    # Fill this in.
 
-# If you are overwriting a value with a different key, print a warning.
-# '''
-def hash_table_insert(hash_table, key, value):
-    pass
-
-
-# '''
-# Fill this in.
-
-# If you try to remove a value that isn't there, print a warning.
-# '''
-def hash_table_remove(hash_table, key):
-    pass
+    # If you try to remove a value that isn't there, print a warning.
+    # '''
+    def hash_table_remove(hash_table, key):
+        pass
 
 
-# '''
-# Fill this in.
+    # '''
+    # Fill this in.
 
-# Should return None if the key is not found.
-# '''
-def hash_table_retrieve(hash_table, key):
-    pass
-
-
-def Testing():
-    ht = BasicHashTable(16)
-
-    hash_table_insert(ht, "line", "Here today...\n")
-
-    hash_table_remove(ht, "line")
-
-    if hash_table_retrieve(ht, "line") is None:
-        print("...gone tomorrow (success!)")
-    else:
-        print("ERROR:  STILL HERE")
+    # Should return None if the key is not found.
+    # '''
+    def hash_table_retrieve(hash_table, key):
+        pass
 
 
-Testing()
+# def Testing():
+#     ht = BasicHashTable(16)
+#
+#     hash_table_insert(ht, "line", "Here today...\n")
+#
+#     hash_table_remove(ht, "line")
+#
+#     if hash_table_retrieve(ht, "line") is None:
+#         print("...gone tomorrow (success!)")
+#     else:
+#         print("ERROR:  STILL HERE")
+#
+#
+# Testing()
+
+
+
+
+
+
+print(hash("Hedera Hashgraph", 16))
