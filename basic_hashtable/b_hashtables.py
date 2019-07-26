@@ -28,11 +28,7 @@ def hash(string, max):
     hash = 5381
     for x in string:
         hash = ((hash << 5) + hash) + ord(x)
-        # print("x is: ",x)
-        # print("hash is: ",hash)
-    # print('modulo max hash is: ',hash % max)
     hash_val = hash % max & 0xFFFFFFFF
-    # print('hash_val is: ',hash_val)
     return hash_val
 
     # '''
@@ -45,11 +41,7 @@ def hash_table_insert(hash_table, key, value):
     pair = Pair(key, value)
     if hash_table.elements[index] is not None:
         print(f"You are overwriting element '{str(hash_table.elements[index].value)}' at index '{index}' with value '{value}'")
-    # print('hash_table.elements[index] was: ', hash_table.elements[index])
     hash_table.elements[index] = pair
-    # print('index is: ',index)
-    # print('value is: ',value)
-    # print('hash_table.elements[index] is now: ', hash_table.elements[index].value)
 
 # '''
 # Fill this in.
@@ -82,8 +74,6 @@ def hash_table_retrieve(hash_table, key):
         elif i is not None and i.key is key:
             print(f"Element with key '{key}' was found at index {hash_table.elements.index(i)}, value: '{i.value}'")
             return i.value
-            # print('non-null i key: ',i.key)
-            # print('non-null i val: ',i.value)
 
 
 
@@ -106,32 +96,4 @@ def Testing():
     else:
         print("ERROR:  STILL HERE")
 
-
-# print('hash is: ',hash("Grace Hopper", ht.capacity))
-    # hash_table_insert(ht, "1384729842", "Dapper Dan")
-    # hash_table_insert(ht, "238472982342", "Virgil Abloh")
-    # hash_table_insert(ht, "33432982342", "Ibn Jasper")
-    # hash_table_insert(ht, "438472982342", "Rob Roy")
-    element_list = []
-    for x in ht.elements:
-        if x is None:
-            element_list.append(x)
-        elif x is not None:
-            element_list.append(x.value)
-    print('ele_list: ',element_list)
-    # hash_table_remove(ht, "2384729842")
-    # hash_table_retrieve(ht, "438472982342")
-    #
-    # if hash_table_retrieve(ht, "line") is None:
-    #     print("...gone tomorrow (success!)")
-    # else:
-    #     print("ERROR:  STILL HERE")
-
-
 Testing()
-
-
-
-
-
-# print(hash("Hedera Hashgraph", 16))
