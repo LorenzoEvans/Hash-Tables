@@ -58,23 +58,14 @@ def hash_table_insert(hash_table, key, value):
 # '''
 def hash_table_remove(hash_table, key):
     index = hash(key, hash_table.capacity)
-    # pair = Pair(key, value)
     val = 0
     if hash_table.elements[index] is None:
         print(f"No value found at index {index}")
     elif hash_table.elements[index] is not None:
         val = hash_table.elements[index].value
-        print('hash table elements: ',hash_table.elements)
-        print('ht element length was: ',len(hash_table.elements))
-        print('found val: ',hash_table.elements[index].value)
         del hash_table.elements[index]
-        print('ht element length is now: ',len(hash_table.elements))
-        print('hash table elements: ',hash_table.elements)
-        # for i in range(index, hash_table.capacity):
-        #     hash_table.elements[i - 1] = hash_table.elements[i]
     return val
 
-    # hash_table.elements[index] = pair
 
 
 
@@ -84,12 +75,13 @@ Fill this in.
 Should return None if the key is not found.
 '''
 def hash_table_retrieve(hash_table, key):
-    index = hash(key, hash_table.capacity)
+
     for i in hash_table.elements:
         if i is None:
             continue
         elif i is not None and i.key is key:
-            print('got it.')
+            print(f"Element with key '{key}' was found at index {hash_table.elements.index(i)}, value: '{i.value}'")
+            return i.value
             # print('non-null i key: ',i.key)
             # print('non-null i val: ',i.value)
 
@@ -97,11 +89,29 @@ def hash_table_retrieve(hash_table, key):
 
 def Testing():
     ht = BasicHashTable(16)
-    # print('hash is: ',hash("Grace Hopper", ht.capacity))
+
+    hash_table_insert(ht, "line", "Here today...\n")
+
+    hash_table_remove(ht, "line")
+    hash_table_retrieve(ht, "line")
+    element_list = []
+    for x in ht.elements:
+        if x is None:
+            element_list.append(x)
+        elif x is not None:
+            element_list.append(x.value)
+    print('ele_list: ', element_list)
+    if hash_table_retrieve(ht, "line") is None:
+        print("...gone tomorrow (success!)")
+    else:
+        print("ERROR:  STILL HERE")
+
+
+# print('hash is: ',hash("Grace Hopper", ht.capacity))
     # hash_table_insert(ht, "1384729842", "Dapper Dan")
     # hash_table_insert(ht, "238472982342", "Virgil Abloh")
     # hash_table_insert(ht, "33432982342", "Ibn Jasper")
-    hash_table_insert(ht, "438472982342", "Rob Roy")
+    # hash_table_insert(ht, "438472982342", "Rob Roy")
     element_list = []
     for x in ht.elements:
         if x is None:
@@ -110,7 +120,7 @@ def Testing():
             element_list.append(x.value)
     print('ele_list: ',element_list)
     # hash_table_remove(ht, "2384729842")
-    hash_table_retrieve(ht, "438472982342")
+    # hash_table_retrieve(ht, "438472982342")
     #
     # if hash_table_retrieve(ht, "line") is None:
     #     print("...gone tomorrow (success!)")
