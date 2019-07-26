@@ -28,8 +28,8 @@ def hash(string, max):
     hash = 5381
     for x in string:
         hash = ((hash << 5) + hash) + ord(x)
-        print("x is: ",x)
-        print("hash is: ",hash)
+        # print("x is: ",x)
+        # print("hash is: ",hash)
     hash_val = hash % max & 0xFFFFFFFF
     return hash_val
 
@@ -43,11 +43,11 @@ def hash_table_insert(hash_table, key, value):
     pair = Pair(key, value)
     if hash_table.elements[index] is not None:
         print(f"You are overwriting element '{str(hash_table.elements[index].value)}' at index '{index}' with value '{value}'")
-    print('hash_table.elements[index] was: ', hash_table.elements[index])
+    # print('hash_table.elements[index] was: ', hash_table.elements[index])
     hash_table.elements[index] = pair
-    print('index is: ',index)
-    print('value is: ',value)
-    print('hash_table.elements[index] is now: ', hash_table.elements[index].value)
+    # print('index is: ',index)
+    # print('value is: ',value)
+    # print('hash_table.elements[index] is now: ', hash_table.elements[index].value)
 
 # '''
 # Fill this in.
@@ -57,11 +57,20 @@ def hash_table_insert(hash_table, key, value):
 def hash_table_remove(hash_table, key):
     index = hash(key, hash_table.capacity)
     # pair = Pair(key, value)
+    val = 0
     if hash_table.elements[index] is None:
-        print(f"No value found at index {key}")
+        print(f"No value found at index {index}")
     elif hash_table.elements[index] is not None:
         val = hash_table.elements[index].value
+        print('hash table elements: ',hash_table.elements)
+        print('ht element length was: ',len(hash_table.elements))
+        print('found val: ',hash_table.elements[index].value)
         del hash_table.elements[index]
+        print('ht element length is now: ',len(hash_table.elements))
+        print('hash table elements: ',hash_table.elements)
+        # for i in range(index, hash_table.capacity):
+        #     hash_table.elements[i - 1] = hash_table.elements[i]
+    return val
 
     # hash_table.elements[index] = pair
 
@@ -78,7 +87,7 @@ def hash_table_retrieve(hash_table, key):
 
 def Testing():
     ht = BasicHashTable(16)
-    print('hash is: ',hash("Grace Hopper", ht.capacity))
+    # print('hash is: ',hash("Grace Hopper", ht.capacity))
     hash_table_insert(ht, "2384729842", "Dapper Dan")
     hash_table_insert(ht, "2384729842", "Virgil Abloh")
     element_list = []
@@ -88,7 +97,7 @@ def Testing():
         elif x is not None:
             element_list.append(x.value)
     print('ele_list: ',element_list)
-    # hash_table_remove(ht, "line")
+    hash_table_remove(ht, "2384729842")
     #
     # if hash_table_retrieve(ht, "line") is None:
     #     print("...gone tomorrow (success!)")
