@@ -40,6 +40,8 @@ def hash(string, max):
     # '''
 def hash_table_insert(hash_table, key, value):
     index = hash(key, hash_table.capacity)
+    if hash_table.elements[index] is not None:
+        print(f"You are overwriting element '{hash_table.elements[index]}' at index '{index}' with value '{value}'")
     print('hash_table.elements[index] was: ', hash_table.elements[index])
     hash_table.elements[index] = value
     print('index is: ',index)
@@ -68,6 +70,7 @@ def Testing():
     ht = BasicHashTable(16)
     print('hash is: ',hash("Grace Hopper", ht.capacity))
     hash_table_insert(ht, "2384729842", "Grace Hopper")
+    hash_table_insert(ht, "2384729842", "John McCarthy")
     print('elements are: ',ht.elements)
     # hash_table_remove(ht, "line")
     #
