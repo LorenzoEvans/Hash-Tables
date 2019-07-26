@@ -54,23 +54,24 @@ def hash_table_insert(hash_table, key, value):
 
 # If you try to remove a value that isn't there, print a warning.
 # '''
-# def hash_table_remove(hash_table, key):
-#     index = hash(key, hash_table.capacity)
-#     pair = Pair(key, value)
-#     if hash_table.elements[index] is not None:
-#         print(f"You are overwriting element '{hash_table.elements[index]}' at index '{index}' with value '{value}'")
-#     print('hash_table.elements[index] was: ', hash_table.elements[index])
-#     hash_table.elements[index] = pair
-#     print('index is: ', index)
-#     print('value is: ', value)
-#     print('hash_table.elements[index] is now: ', hash_table.elements[index])
-#
+def hash_table_remove(hash_table, key):
+    index = hash(key, hash_table.capacity)
+    # pair = Pair(key, value)
+    if hash_table.elements[index] is None:
+        print(f"No value found at index {key}")
+    elif hash_table.elements[index] is not None:
+        val = hash_table.elements[index].value
+        del hash_table.elements[index]
 
-# '''
-# Fill this in.
+    # hash_table.elements[index] = pair
 
-# Should return None if the key is not found.
-# '''
+
+
+'''
+Fill this in.
+
+Should return None if the key is not found.
+'''
 def hash_table_retrieve(hash_table, key):
     pass
 
