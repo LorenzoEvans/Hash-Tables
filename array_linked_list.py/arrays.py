@@ -34,8 +34,10 @@ def array_read(array, index):
 		return array.elements[index]
 
 # Insert an element in a given array at a given index
-def array_insert(array, index, value):
-
+def array_insert(array, value, index):
+	if index > array.count:
+		print("Error, index out of range.")
+		return None
 
 	if array.capacity <= array.count:
 		resize_array(array)
@@ -81,14 +83,23 @@ def array_remove(array, element):
 		print("Error, element " + str(element) + " not found!")
 # Remove the element in a given position and return it
 # Then shift every element after that occurrance to fill the gap
-def array_pop():
+def array_pop(array, index):
 	# Throw an error if array is out of the current count
 	# Your code here
-	pass
+	if index > array.count:
+		print("Index is out of range")
+		return None
 
+	return_value = array.elements[index]
+	for i in range(index + 1, array.count):
+		array.elements[i-1] = array.elements[i]
+
+	array.count -= 1
+	array.elements[array.count] = None
+	return return_value
 
 # Utility to print an array
-def array_print(array):
+def array_print(text, array):
 	string = "["
 	for i in range(array.count):
 		string += str(array.elements[i])
@@ -96,18 +107,19 @@ def array_print(array):
 			string += ", "
 
 	string += "]"
-	print(string)
+	print(f"{text} ++ {string}")
 
 
 # # Testing
-# arr = array(1)
+arr = array(1)
 
-# array_insert(arr, "STRING1", 0)
-# array_print(arr)
-# array_pop(arr, 0)
-# array_print(arr)
-# array_insert(arr, "STRING1", 0)
-# array_append(arr, "STRING4")
-# array_insert(arr, "STRING2", 1)
-# array_insert(arr, "STRING3", 2)
-# array_print(arr)
+array_insert(arr, "STRING1", 0)
+array_print('arr is: ',arr)
+array_pop(arr, 0)
+array_print('arr is: ',arr)
+array_insert(arr, "STRING1", 0)
+array_print('arr is now: ',arr)
+array_append(arr, "STRING4")
+array_insert(arr, "STRING2", 1)
+array_insert(arr, "STRING3", 2)
+array_print('arr is now: ',arr)
