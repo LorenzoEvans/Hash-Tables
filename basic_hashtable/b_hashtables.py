@@ -30,7 +30,9 @@ def hash(string, max):
         hash = ((hash << 5) + hash) + ord(x)
         # print("x is: ",x)
         # print("hash is: ",hash)
+    # print('modulo max hash is: ',hash % max)
     hash_val = hash % max & 0xFFFFFFFF
+    # print('hash_val is: ',hash_val)
     return hash_val
 
     # '''
@@ -86,19 +88,20 @@ def hash_table_retrieve(hash_table, key):
     for i in hash_table.elements:
         if i is None:
             continue
-        elif i is not None:
-            print('non-null i key: ',i.key)
-            print('non-null i val: ',i.value)
+        elif i is not None and i.key is key:
+            print('got it.')
+            # print('non-null i key: ',i.key)
+            # print('non-null i val: ',i.value)
 
 
 
 def Testing():
     ht = BasicHashTable(16)
     # print('hash is: ',hash("Grace Hopper", ht.capacity))
-    hash_table_insert(ht, "1384729842", "Dapper Dan")
+    # hash_table_insert(ht, "1384729842", "Dapper Dan")
     # hash_table_insert(ht, "238472982342", "Virgil Abloh")
     # hash_table_insert(ht, "33432982342", "Ibn Jasper")
-    # hash_table_insert(ht, "438472982342", "Rob Roy")
+    hash_table_insert(ht, "438472982342", "Rob Roy")
     element_list = []
     for x in ht.elements:
         if x is None:
@@ -107,7 +110,7 @@ def Testing():
             element_list.append(x.value)
     print('ele_list: ',element_list)
     # hash_table_remove(ht, "2384729842")
-    # hash_table_retrieve(ht, "2384729842")
+    hash_table_retrieve(ht, "438472982342")
     #
     # if hash_table_retrieve(ht, "line") is None:
     #     print("...gone tomorrow (success!)")
