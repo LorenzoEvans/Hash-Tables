@@ -18,7 +18,7 @@ class LinkedPair:
 class HashTable:
     def __init__(self, capacity):
         self.capacity = capacity
-        self.elements = [] # maybe array we built?
+        self.elements = [None] * capacity # maybe array we built?
         self.count = 0
         pass
 
@@ -40,8 +40,11 @@ def hash(string, max):
 # '''
 def hash_table_insert(hash_table, key, value):
     index = hash(key, hash_table.capacity)
-    pass
+    node = LinkedPair(key, value)
+    if hash_table.elements[index] is None:
+        print('placeholder')
 
+    hash_table.elements[index] = node
 
 # '''
 # Fill this in.
