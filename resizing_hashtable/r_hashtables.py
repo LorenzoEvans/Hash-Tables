@@ -1,4 +1,4 @@
-
+from array_linked_list.arrays import array
 
 # '''
 # Linked List hash table key/value pair
@@ -17,6 +17,9 @@ class LinkedPair:
 # '''
 class HashTable:
     def __init__(self, capacity):
+        self.capacity = capacity
+        self.elements = [] # maybe array we built?
+        self.count = 0
         pass
 
 
@@ -36,6 +39,7 @@ def hash(string, max):
 # Hint: Used the LL to handle collisions
 # '''
 def hash_table_insert(hash_table, key, value):
+    index = hash(key, hash_table.capacity)
     pass
 
 
