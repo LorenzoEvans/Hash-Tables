@@ -20,7 +20,6 @@ class HashTable:
         self.capacity = capacity
         self.elements = [None] * capacity # maybe array we built?
         self.count = 0
-        pass
 
 
 # '''
@@ -52,9 +51,14 @@ def hash_table_insert(hash_table, key, value):
 # If you try to remove a value that isn't there, print a warning.
 # '''
 def hash_table_remove(hash_table, key):
-    pass
-
-
+    index = hash(key, hash_table.capacity)
+    val = 0
+    if hash_table.elements[index] is None:
+        print(f"No value found at index {index}")
+    elif hash_table.elements[index] is not None:
+        val = hash_table.elements[index].value
+        del hash_table.elements[index]
+    return val
 # '''
 # Fill this in.
 
