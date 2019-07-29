@@ -42,21 +42,12 @@ def array_insert(array, value, index):
 	if array.capacity <= array.count:
 		resize_array(array)
 
-
-	# Throw an error if array is out of the current count
-
-	# Resize the array if the number of elements is over capacity
-
-	# Move the elements to create a space at 'index'
 	for i in range(array.count, index, -1):
 		array.elements[i] = array.elements[i - 1]
-	# Think about where to start!
 
-	# Add the new element to the array and update the count
 	array.elements[index] = value
 	array.count += 1
 
-# Add an element to the end of the given array
 def array_append(array, value):
 	array_insert(array, value, array.count)
 	# Hint, this can be done with one line of code
@@ -114,12 +105,12 @@ def array_print(text, array):
 arr = array(1)
 
 array_insert(arr, "STRING1", 0)
-array_print('arr is: ',arr)
+# array_print('arr is: ',arr)
 array_pop(arr, 0)
-array_print('arr is: ',arr)
+# array_print('arr is: ',arr)
 array_insert(arr, "STRING1", 0)
-array_print('arr is now: ',arr)
+# array_print('arr is now: ',arr)
 array_append(arr, "STRING4")
 array_insert(arr, "STRING2", 1)
 array_insert(arr, "STRING3", 2)
-array_print('arr is now: ',arr)
+# array_print('arr is now: ',arr)

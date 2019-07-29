@@ -1,4 +1,4 @@
-from array_linked_list.arrays import array
+from array_linked_list import arrays
 
 # '''
 # Linked List hash table key/value pair
@@ -65,8 +65,10 @@ def hash_table_remove(hash_table, key):
 # Should return None if the key is not found.
 # '''
 def hash_table_retrieve(hash_table, key):
-    pass
-
+    new_cap = hash_table.capacity * 2
+    new_ele = [None] * new_cap
+    for x in hash_table.elements:
+        new_ele.append()
 
 # '''
 # Fill this in
