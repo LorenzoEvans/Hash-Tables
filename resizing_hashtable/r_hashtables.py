@@ -18,7 +18,7 @@ class LinkedPair:
 class HashTable:
     def __init__(self, capacity):
         self.capacity = capacity
-        self.elements = [None] * capacity # maybe array we built?
+        self.elements = array([None] * capacity) # maybe array we built?
         self.count = 0
 
 
@@ -54,7 +54,7 @@ def hash_table_remove(hash_table, key):
     index = hash(key, hash_table.capacity)
     val = 0
     if hash_table.elements[index] is None:
-        print(f"No value found at index {index}")
+        print(f"No value found at index '{index}'")
     elif hash_table.elements[index] is not None:
         val = hash_table.elements[index].value
         del hash_table.elements[index]
@@ -65,35 +65,39 @@ def hash_table_remove(hash_table, key):
 # Should return None if the key is not found.
 # '''
 def hash_table_retrieve(hash_table, key):
-    new_cap = hash_table.capacity * 2
-    new_ele = [None] * new_cap
+    val = 0
     for x in hash_table.elements:
-        new_ele.append(x)
+        if x is None:
+            continue
+        if x is not None and x.key is key:
+            val = x.value
+            print(f"Element with key '{key}' found at index '{hash_table.elements.index(i)}', value: '{i.value}'")
+    return val
 
 # '''
 # Fill this in
 # '''
 def hash_table_resize(hash_table):
-    pass
-
+    new_cap = hash_table.capacity * 2
+    new_ele = [None] * new_cap
 
 def Testing():
     ht = HashTable(2)
 
-    hash_table_insert(ht, "line_1", "Tiny hash table")
-    hash_table_insert(ht, "line_2", "Filled beyond capacity")
-    hash_table_insert(ht, "line_3", "Linked list saves the day!")
-
-    print(hash_table_retrieve(ht, "line_1"))
-    print(hash_table_retrieve(ht, "line_2"))
-    print(hash_table_retrieve(ht, "line_3"))
-
-    old_capacity = len(ht.storage)
-    ht = hash_table_resize(ht)
-    new_capacity = len(ht.storage)
-
-    print("Resized hash table from " + str(old_capacity)
-          + " to " + str(new_capacity) + ".")
+    # hash_table_insert(ht, "line_1", "Tiny hash table")
+    # hash_table_insert(ht, "line_2", "Filled beyond capacity")
+    # hash_table_insert(ht, "line_3", "Linked list saves the day!")
+    #
+    # print(hash_table_retrieve(ht, "line_1"))
+    # print(hash_table_retrieve(ht, "line_2"))
+    # print(hash_table_retrieve(ht, "line_3"))
+    #
+    # old_capacity = len(ht.storage)
+    # ht = hash_table_resize(ht)
+    # new_capacity = len(ht.storage)
+    #
+    # print("Resized hash table from " + str(old_capacity)
+    #       + " to " + str(new_capacity) + ".")
 
 
 Testing()
