@@ -1,4 +1,3 @@
-from array_linked_list.arrays import array
 
 # '''
 # Linked List hash table key/value pair
@@ -18,7 +17,7 @@ class LinkedPair:
 class HashTable:
     def __init__(self, capacity):
         self.capacity = capacity
-        self.elements = array([None] * capacity) # maybe array we built?
+        self.elements = [None] * capacity # maybe array we built?
         self.count = 0
 
 
@@ -26,7 +25,7 @@ class HashTable:
 # Research and implement the djb2 hash function
 # '''
 def hash(string, max):
-    hash - 5381
+    hash = 5381
     for x in string:
         hash = ((hash << 5) + hash) + ord(x)
     hash_val = hash % max & 0xFFFFFFFF
@@ -84,7 +83,7 @@ def hash_table_resize(hash_table):
 def Testing():
     ht = HashTable(2)
 
-    # hash_table_insert(ht, "line_1", "Tiny hash table")
+    hash_table_insert(ht, "line_1", "Tiny hash table")
     # hash_table_insert(ht, "line_2", "Filled beyond capacity")
     # hash_table_insert(ht, "line_3", "Linked list saves the day!")
     #
