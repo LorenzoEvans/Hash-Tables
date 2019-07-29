@@ -1,4 +1,4 @@
-from array_linked_list import arrays
+from array_linked_list.arrays import array
 
 # '''
 # Linked List hash table key/value pair
@@ -68,7 +68,7 @@ def hash_table_retrieve(hash_table, key):
     new_cap = hash_table.capacity * 2
     new_ele = [None] * new_cap
     for x in hash_table.elements:
-        new_ele.append()
+        new_ele.append(x)
 
 # '''
 # Fill this in
