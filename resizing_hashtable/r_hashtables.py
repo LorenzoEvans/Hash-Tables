@@ -39,9 +39,8 @@ def hash(string, max):
 def hash_table_insert(hash_table, key, value):
     index = hash(key, hash_table.capacity)
     node = LinkedPair(key, value)
-    if hash_table.elements[index] is None:
-        print('placeholder')
-
+    if hash_table.elements[index] is not None:
+        print(f"You are overwriting element '{str(hash_table.elements[index].value)}' at index '{index}' with value '{value}'")
     hash_table.elements[index] = node
 
 # '''
@@ -64,14 +63,15 @@ def hash_table_remove(hash_table, key):
 # Should return None if the key is not found.
 # '''
 def hash_table_retrieve(hash_table, key):
-    val = 0
+    val = -1
     for x in hash_table.elements:
         if x is None:
             continue
         if x is not None and x.key is key:
             val = x.value
-            print(f"Element with key '{key}' found at index '{hash_table.elements.index(i)}', value: '{i.value}'")
+            print(f"Element with key '{key}' found at index '{hash_table.elements.index(x)}', value: '{x.value}'")
     return val
+
 
 # '''
 # Fill this in
@@ -84,12 +84,19 @@ def Testing():
     ht = HashTable(2)
 
     hash_table_insert(ht, "line_1", "Tiny hash table")
-    # hash_table_insert(ht, "line_2", "Filled beyond capacity")
-    # hash_table_insert(ht, "line_3", "Linked list saves the day!")
+    hash_table_insert(ht, "line_2", "Filled beyond capacity")
+    element_list = []
+    for x in ht.elements:
+        if x is None:
+            element_list.append(x)
+        elif x is not None:
+            element_list.append(x.value)
+    print('ele_list: ', element_list)
+    hash_table_insert(ht, "line_3", "Linked list saves the day!")
     #
-    # print(hash_table_retrieve(ht, "line_1"))
-    # print(hash_table_retrieve(ht, "line_2"))
-    # print(hash_table_retrieve(ht, "line_3"))
+    print(hash_table_retrieve(ht, "line_1"))
+    print(hash_table_retrieve(ht, "line_2"))
+    print(hash_table_retrieve(ht, "line_3"))
     #
     # old_capacity = len(ht.storage)
     # ht = hash_table_resize(ht)
