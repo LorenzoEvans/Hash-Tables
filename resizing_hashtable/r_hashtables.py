@@ -79,6 +79,13 @@ def hash_table_retrieve(hash_table, key):
 def hash_table_resize(hash_table):
     new_cap = hash_table.capacity * 2
     new_ele = [None] * new_cap
+    print('old elements length: ', len(hash_table.elements))
+    print('new elements length: ', len(new_ele))
+    for i in hash_table.elements:
+        new_ele.append(i)
+        # print('i is: ', str(new_ele[i]))
+    hash_table.capacity = new_cap
+    hash_table.elements = new_ele
 
 def Testing():
     ht = HashTable(2)
@@ -98,10 +105,12 @@ def Testing():
     print(hash_table_retrieve(ht, "line_2"))
     print(hash_table_retrieve(ht, "line_3"))
     #
-    # old_capacity = len(ht.storage)
-    # ht = hash_table_resize(ht)
-    # new_capacity = len(ht.storage)
-    #
+    old_capacity = len(ht.elements)
+    print(old_capacity)
+    ht = hash_table_resize(ht)
+    ht = hash_table_resize(ht)
+    # new_capacity = len(ht.elements)
+
     # print("Resized hash table from " + str(old_capacity)
     #       + " to " + str(new_capacity) + ".")
 
