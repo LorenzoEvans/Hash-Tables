@@ -79,40 +79,66 @@ def hash_table_retrieve(hash_table, key):
 def hash_table_resize(hash_table):
     new_cap = hash_table.capacity * 2
     new_ele = [None] * new_cap
-    print('old elements length: ', len(hash_table.elements))
-    print('new elements length: ', len(new_ele))
+    # print('old elements length: ', len(hash_table.elements))
+    # print('new elements length: ', len(new_ele))
     for i in hash_table.elements:
         new_ele.append(i)
         # print('i is: ', str(new_ele[i]))
     hash_table.capacity = new_cap
     hash_table.elements = new_ele
+    element_list = []
+    # for x in hash_table.elements:
+    #     if x is None:
+    #         element_list.append(x)
+    #     elif x is not None:
+    #         element_list.append(x.value)
+    # element_list = hash_table.elements
+    # print('ele_list: ', element_list)
+    # print('ht type: ',type(hash_table))
+    return hash_table
 
+# ht = HashTable(2)
+# hash_table_insert(ht, "line_1", "Tiny hash table")
+# hash_table_insert(ht, "line_2", "Filled beyond capacity")
+# print(type(ht))
+# old_capacity = len(ht.elements)
+# # print(type(old_capacity))
+# print('old_cap: ',old_capacity)
+# print('Testing pre-resize ht type: ',type(ht))
+# ht = hash_table_resize(ht)
+# print('Testing post-resize ht type: ',type(ht))
+# # new_capacity = len(ht.elements)
+# # type(new_capacity)
+# # print("Resized hash table from " + str(old_capacity)
+# #           + " to " + str(new_capacity) + ".")
 def Testing():
     ht = HashTable(2)
 
     hash_table_insert(ht, "line_1", "Tiny hash table")
     hash_table_insert(ht, "line_2", "Filled beyond capacity")
-    element_list = []
-    for x in ht.elements:
-        if x is None:
-            element_list.append(x)
-        elif x is not None:
-            element_list.append(x.value)
-    print('ele_list: ', element_list)
+    # element_list = []
+    # for x in ht.elements:
+    #     if x is None:
+    #         element_list.append(x)
+    #     elif x is not None:
+    #         element_list.append(x.value)
+    # print('ele_list: ', element_list)
     hash_table_insert(ht, "line_3", "Linked list saves the day!")
     #
-    print(hash_table_retrieve(ht, "line_1"))
-    print(hash_table_retrieve(ht, "line_2"))
-    print(hash_table_retrieve(ht, "line_3"))
+    # print(hash_table_retrieve(ht, "line_1"))
+    # print(hash_table_retrieve(ht, "line_2"))
+    # print(hash_table_retrieve(ht, "line_3"))
     #
     old_capacity = len(ht.elements)
-    print(old_capacity)
+    # print(type(old_capacity))
+    print('old_cap: ',old_capacity)
+    print('Testing pre-resize ht type: ',type(ht))
     ht = hash_table_resize(ht)
-    ht = hash_table_resize(ht)
-    # new_capacity = len(ht.elements)
-
-    # print("Resized hash table from " + str(old_capacity)
-    #       + " to " + str(new_capacity) + ".")
+    print('Testing post-resize ht type: ',type(ht))
+    new_capacity = len(ht.elements)
+    type(new_capacity)
+    print("Resized hash table from " + str(old_capacity)
+          + " to " + str(new_capacity) + ".")
 
 
 Testing()
